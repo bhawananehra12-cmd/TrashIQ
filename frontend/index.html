@@ -7,7 +7,7 @@
         * { box-sizing: border-box; font-family: "Segoe UI", sans-serif; }
         body { margin: 0; background: #000; color: white; }
 
-        /* HEADER FIX: Logo size set to 100px */
+        
         header { 
             background: #0b5ed7; 
             padding: 10px 40px; 
@@ -18,14 +18,14 @@
         .logo { 
             width: 100px; 
             height: 100px; 
-            object-fit: contain; /* Isse logo stretch nahi hoga */
-            /* Agar logo.png background wali hai toh white circle hata sakte hain */
+            object-fit: contain;
+            
         }
 
-        /* BACKGROUND FIX: Full screen with local image */
+        
         #home {
             min-height: 90vh;
-            /* Yahan background.jpg tabhi dikhegi jab file same folder mein hogi */
+           
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('backgrond.jpg') center/cover no-repeat;
             display: flex; 
@@ -87,7 +87,7 @@
 <footer>© 2026 TrashIQ THANK YOU| Eco-Friendly AI</footer>
 
 <script>
-    // JS Logic remains same for unlimited uploads
+
     const fileInput = document.getElementById('fileInput');
     const resultDiv = document.getElementById('result');
     const btn = document.getElementById('btn');
