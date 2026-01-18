@@ -6,10 +6,10 @@ import os
 
 MODEL_PATH = "trash_model.h5"
 
-# 🔥 IMPORTANT CHANGE HERE
+
 model = tf.keras.models.load_model(MODEL_PATH, compile=False)
 
-# ⚠️ EXACT SAME ORDER AS TRAINING
+
 CLASSES = ["dry", "e_waste", "hazardious", "wet"]
 
 BIN_COLORS = {
