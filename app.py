@@ -1,8 +1,8 @@
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import os, uuid, traceback
 
-# Maan lete hain ki predict_waste aapke model se result lata hai
 from predict import predict_waste 
 
 app = Flask(__name__)
@@ -22,15 +22,12 @@ def predict():
         ext = os.path.splitext(file.filename)[1]
         filename = f"{uuid.uuid4().hex}{ext}"
         path = os.path.join(UPLOAD_FOLDER, filename)
-        
-        # Save and close the file properly
-        file.save(path)
-        file.close() 
 
-        # Prediction logic
+        file.save(path)
+        file.close()
+
         waste, bin_color = predict_waste(path)
 
-        # File delete kar rahe hain taaki memory na bhare (Unlimited uploads ke liye)
         if os.path.exists(path):
             os.remove(path)
 
@@ -42,10 +39,12 @@ def predict():
 
     except Exception:
         if path and os.path.exists(path):
-            os.remove(path) # Error aane par bhi file delete karein
+            os.remove(path)
         traceback.print_exc()
         return jsonify({"error": "Prediction failed"}), 500
 
+
+# ✅ VERY IMPORTANT FOR RENDER
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-    
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
